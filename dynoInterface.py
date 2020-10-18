@@ -1,8 +1,9 @@
 import can
 import time
+import struct
 
 # change this to COMX if on windows
-CANABLE_PORT = '/dev/cu.usbmodem14301'
+CANABLE_PORT = '/dev/cu.usbmodem14201'
 
 SERVO_FRAME_ID = 0xCD # temp
 
