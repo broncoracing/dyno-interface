@@ -1,11 +1,21 @@
 import can
+import time
 from serial.tools import list_ports
 
 def selectPort():
-    for port in list_ports.comports():
-        if port.manufacturer == 'Protofusion Labs':
-            print(f'Canable found at {port.device}')
-            return port.device
+    portFound = False
+    retries = 10
+    while(portFound == False and retries >= 0):
+        for port in list_ports.comports():
+            if port.manufacturer == 'Protofusion Labs':
+                print(f'Canable found at {port.device}')
+                portFound = True
+                return port.device
+        retries = retries - 1;
+        time.sleep(1)
+        print('CANable not found, retrying...')
+
+    exit(1)
 
 
 def canDump(CANablePort, bitRate):
