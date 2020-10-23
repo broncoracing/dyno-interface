@@ -1,6 +1,7 @@
 import can
 import time
 from serial.tools import list_ports
+import os
 
 # Searches USB serial ports for a device with "Protofusion Labs" as the manufacturer name.
 def selectPort():
@@ -17,7 +18,6 @@ def selectPort():
         print('CANable not found, retrying...')
 
     exit(1)
-
 
 # Connects to and configures CANable device, dumps frame ID, DLC, and data
 def canDump(CANablePort, bitRate):
